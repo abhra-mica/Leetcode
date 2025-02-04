@@ -16,21 +16,24 @@ public class L27_RemoveElement {
 		return index;
 	}
 
-	//Not give correct output like nums = {3}, val = 3
-	public static int removeElementImproper(int[] nums, int val) {
+	public static int removeElement(int[] nums, int val) {
 		int start = 0;
 		int end = nums.length - 1;
 
+		if (end < 0) { // If array is empty
+			return 0;
+		}
+		// The while loop will exist when start == end
 		while (start < end) {
 			if (nums[start] == val) {
-				int temp = nums[start];
-				nums[start] = nums[end];
-				nums[end] = temp;
-				end--;
+				nums[start] = nums[end--];
 			} else {
 				start++;
 			}
 		}
-		return start + 1;
+		// if nums[start] == val then simply return start because 0 indexed
+		// array , if not then current nums[start] element also need to
+		// consider, so start + 1
+		return nums[start] == val ? start : start + 1;
 	}
 }
