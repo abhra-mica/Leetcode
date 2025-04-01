@@ -7,13 +7,12 @@ public class L9_PalindromeNumber {
 		System.out.println("Palindrome = " + result);
 
 	}
-
 	public static boolean isPalindrome(int x) {
-		if (x < 0 || (x % 10 == 0 && x != 0)) {// Suppose 1210, ending with zero
-												// can't be a palindrome. x!=0
-												// ==> if the number is only
-												// zero then itself a palindrome
-												// number
+		/*
+		 * Suppose 1210, ending with zero can't be a palindrome. x!=0 ==> if the
+		 * number is only zero then itself a palindrome number
+		 */
+		if (x < 0 || (x % 10 == 0 && x != 0)) {
 			return false;
 		}
 
@@ -23,12 +22,12 @@ public class L9_PalindromeNumber {
 			reversedNo = reversedNo * 10 + x % 10;
 			x = x / 10;
 		}
-
-		return (x == reversedNo) || x == reversedNo / 10; // suppose 121, one
-															// point x=1 and
-															// reversedNo=12
-															// then the second
-															// or condition will
-															// work
+		/*
+		 * suppose 121, one point x=1 and reversedNo=12 then the second or
+		 * condition will work
+		 */
+		return x == reversedNo || x == reversedNo / 10;
 	}
+									
+   }
 }
