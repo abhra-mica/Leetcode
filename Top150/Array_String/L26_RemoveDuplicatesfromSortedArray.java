@@ -17,4 +17,18 @@ public class L26_RemoveDuplicatesfromSortedArray {
 		}
 		return index + 1;
 	}
+
+	    //Another way
+    public static int removeDuplicates1(int[] nums) {
+        int start = 0;
+        int end = 0;
+
+        while (end < nums.length) {
+            if (nums[start] != nums[end]) {
+                nums[++start] = nums[end];
+            }
+            end++;
+        }
+        return start + 1;
+    }
 }
