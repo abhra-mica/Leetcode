@@ -5,28 +5,29 @@ public class L13_RomanToInteger {
 	public static void main(String[] args) {
 		String roman = "III";
 		System.out.println(romanToInt(roman));
-
 	}
 
-	public static int romanToInt(String roman) {
-		Map<Character, Integer> map = new HashMap<>();
-		map.put('I', 1);
-		map.put('V', 5);
-		map.put('X', 10);
-		map.put('L', 50);
-		map.put('C', 100);
-		map.put('D', 500);
-		map.put('M', 1000);
+ public static int romanToInt(String s) {
+        Map<Character, Integer> intRomans = new HashMap<>();
+        intRomans.put('I', 1);
+        intRomans.put('V', 5);
+        intRomans.put('X', 10);
+        intRomans.put('L', 50);
+        intRomans.put('C', 100);
+        intRomans.put('D', 500);
+        intRomans.put('M', 1000);
 
-		int result = map.get(roman.charAt(roman.length() - 1));
+        int length = s.length() - 1;
+        int number = intRomans.get(s.charAt(length--));
 
-		for (int i = roman.length() - 2; i >= 0; i--) {
-			if (map.get(roman.charAt(i)) >= map.get(roman.charAt(i + 1))) {
-				result += map.get(roman.charAt(i));
-			} else {
-				result -= map.get(roman.charAt(i));
-			}
-		}
-		return result;
-	}
+        while (length >= 0) {
+            if (intRomans.get(s.charAt(length)) >= intRomans.get(s.charAt(length + 1))) {
+                number += intRomans.get(s.charAt(length));
+            } else {
+                number -= intRomans.get(s.charAt(length));
+            }
+            length--;
+        }
+        return number;
+    }
 }
