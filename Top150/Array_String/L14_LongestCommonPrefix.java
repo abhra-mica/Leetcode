@@ -3,7 +3,7 @@ import java.util.Arrays;
 public class L14_LongestCommonPrefix {
 	public static void main(String[] args) {
 		String[] strs = {"dog", "racecar", "car"};
-    //String[] strs = {"flower","flow","flight"};
+    	//String[] strs = {"flower","flow","flight"};
 		String result = longestCommonPrefix(strs);
 		System.out.println("Longest Common Prefix == " + result);
 	}
@@ -23,4 +23,19 @@ public class L14_LongestCommonPrefix {
 
 		return sb.toString();
 	}
+
+	 public static String longestCommonPrefix(String[] strs) {
+        Arrays.sort(strs);
+        String first = strs[0];
+        String last = strs[strs.length - 1];
+
+        int i = 0;
+        while (i < first.length()) {
+            if (first.charAt(i) != last.charAt(i)) {
+                break;
+            }
+            i++;
+        }
+        return first.substring(0, i);
+    }
 }
