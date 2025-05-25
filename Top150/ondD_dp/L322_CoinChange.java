@@ -4,8 +4,8 @@ import java.util.Arrays;
 
 public class L322_CoinChange {
 	public static void main(String[] args) {
-		int[] coins = {2};
-		int amount = 3;
+		int[] coins = {1, 3, 5};
+		int amount = 6;
 		int result = coinChange(coins, amount);
 		System.out.println("Minimum Coins required= " + result);
 	}
@@ -18,10 +18,11 @@ public class L322_CoinChange {
 
 		for (int val = 1; val <= amount; val++) {
 			for (int coin : coins) {
-				if (coin <= val) {
-					int restVal = val - coin;
-					dp[val] = Math.min(dp[val], dp[restVal] + 1);
+				if (coin > val) {
+					break;
 				}
+				int restVal = val - coin;
+				dp[val] = Math.min(dp[val], dp[restVal] + 1);
 			}
 		}
 
