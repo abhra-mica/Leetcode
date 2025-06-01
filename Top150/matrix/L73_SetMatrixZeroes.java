@@ -2,6 +2,9 @@ package matrix;
 
 public class L73_SetMatrixZeroes {
 	public static void main(String[] args) {
+		int[][] matrix = {{1, 1, 1}, {1, 0, 1}, {1, 1, 1}};
+		setZerosAuxSpace(matrix);
+		System.out.println(matrix);
 	}
 
 	public void setZeroes(int[][] matrix) {
@@ -46,6 +49,31 @@ public class L73_SetMatrixZeroes {
 		if (colFirst) {
 			for (int i = 0; i < matrix.length; i++) {
 				matrix[i][0] = 0;
+			}
+		}
+	}
+
+	// In this method we are using two auxilary boolean arrays for which row and
+	// column has zero values
+	public static void setZeroesAuxSpace(int[][] matrix) {
+		boolean[] rowTrack = new boolean[matrix.length];
+		boolean[] colTrack = new boolean[matrix[0].length];
+
+		for (int i = 0; i < matrix.length; i++) {
+			for (int j = 0; j < matrix[0].length; j++) {
+
+				if (matrix[i][j] == 0) {
+					rowTrack[i] = true;
+					colTrack[j] = true;
+				}
+			}
+		}
+
+		for (int i = 0; i < matrix.length; i++) {
+			for (int j = 0; j < matrix[0].length; j++) {
+				if (rowTrack[i] || colTrack[j]) {
+					matrix[i][j] = 0;
+				}
 			}
 		}
 	}
