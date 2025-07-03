@@ -1,5 +1,4 @@
 package heap;
-
 import java.util.PriorityQueue;
 
 public class L215_KthLargestElementArray {
@@ -11,6 +10,11 @@ public class L215_KthLargestElementArray {
 		System.out.println("Kth largest element= " + result);
 	}
 
+	/*
+	 * count value will keep on increasing we don't have to bother because once
+	 * the value will crossed k then after every addition we need to remove the
+	 * top element
+	 */
 	public static int findKthLargest(int[] nums, int k) {
 		PriorityQueue<Integer> pq = new PriorityQueue<>();
 		int count = 0;
@@ -23,6 +27,21 @@ public class L215_KthLargestElementArray {
 		}
 		return pq.peek();
 	}
+	
+	//Another Way of writing code
+	public static int findKthLargestEle(int[] nums, int k) {
+		PriorityQueue<Integer> pq = new PriorityQueue<>();
+		for (int num : nums) {
+			pq.add(num);
+			if (k == 0) {
+				pq.poll();
+			} else {
+				k--;
+			}
+		}
+		return pq.peek();
+	}
+
 	// Failing for some test cases
 	public static int findKthLargestQuick(int[] nums, int k) {
 		if (nums.length == 0) {
