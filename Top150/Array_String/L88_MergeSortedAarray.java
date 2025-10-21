@@ -1,6 +1,6 @@
 package array_string;
 
-public class L88_MergeSortedAarray {
+public class L88_MergeSortedArray {
 	public static void main(String[] args) {
 		/*
 		 * int[] nums1 = {1, 2, 3, 0, 0, 0}; int m = 3; int[] nums2 = {2, 5, 6};
